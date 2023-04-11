@@ -60,6 +60,25 @@ const handleUpdateUser = async (req, res) => {
 	}
 };
 
+const handleDeleteFromCart = async (req, res) => {
+	try {
+		const getCurrentUser = await getUser(req.body.userID);
+
+		let newCart;
+		if (getCurrentUser.userCart) {
+			newCart = [...getCurrentUser.userCart.filter((item) => item !== req.body.productID)];
+		} else {
+			newCart = [];
+		}
+		const result = await updateUser(req.body.userID, { userCart: newCart });
+
+		res.status(HttpStatusCode.OK).send(result);
+	} catch (error) {
+		res.status(HttpStatusCode.INTERNAL_SERVER_ERROR).send({ error });
+	}
+};
+
+
 const handleAddUserOrder = async (req, res) => {
 	try {
 		const getCurrentUser = await getUser(req.query.userId);
@@ -159,4 +178,5 @@ module.exports = {
 	handleLogOut,
 	handleDeleteOrderItem,
 	handleAddUserOrder,
+	handleDeleteFromCart,
 };

@@ -13,6 +13,7 @@ const {
 	handleGetUser,
 	handleDeleteOrderItem,
 	handleAddUserOrder,
+	handleDeleteFromCart,
 } = require('../controllers/user');
 const isAuthenticated = require('../utils/isAuthenticated');
 
@@ -46,6 +47,9 @@ router.delete('/profile', handleDeleteUser);
 router.patch('/profile', handleUpdateUser);
 
 router.patch('/profileAddOrder', handleAddUserOrder);
+
+router.patch('/profileDeleteFromCart', handleDeleteFromCart);
+
 
 router.patch('/profile/order/delete',type ,handleDeleteOrderItem);
 

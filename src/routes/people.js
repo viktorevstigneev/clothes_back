@@ -38,6 +38,7 @@ router.get('/person/:id', handleGetPerson);
 router.post('/team',type ,handleAddTeam);
 router.post('/team/order',type ,handleOrderTeam);
 router.delete('/team/:id', handleDeleteTeam);
+
 router.patch('/team/:id', type, handleUpdateTeam);
 router.post('/upload', type, handleUploadPhoto);
 

@@ -84,7 +84,7 @@ const handleDeleteTeam = async (req, res) => {
 const handleUpdateTeam = async (req, res) => {
 	try {
 		const result = await updateTeam(req.params.id, {
-			name: req.body.name,
+			price: req.body.price,
 			description: req.body.description,
 			avatar: req.body.avatar,
 		});
