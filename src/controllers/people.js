@@ -83,10 +83,12 @@ const handleDeleteTeam = async (req, res) => {
 
 const handleUpdateTeam = async (req, res) => {
 	try {
+		
 		const result = await updateTeam(req.params.id, {
 			price: req.body.price,
 			description: req.body.description,
-			avatar: req.body.avatar,
+			avatar: req.file.filename,
+		
 		});
 
 		res.status(HttpStatusCode.OK).send(result);
